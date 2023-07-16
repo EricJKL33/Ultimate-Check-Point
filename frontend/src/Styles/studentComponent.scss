@@ -1,0 +1,115 @@
+// studentComponent.scss
+
+.student-cnt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f1f1f1;
+}
+
+.student-info {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  width: 80%;
+  max-width: 800px;
+
+  h2 {
+    margin-right: 200px;
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+}
+
+.student-info-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.add-btn {
+  display: block;
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  background-color: #2ecc71;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.student-list-header {
+  display: flex;
+  height: 70px;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 1.3rem;
+  border-bottom: solid 2px #b1b0b06f;
+}
+
+.name {
+  width: 100px;
+  height: 30px;
+  margin-left: 17px;
+}
+
+.email {
+  width: 100px;
+  height: 30px;
+  margin-left: 65px;
+}
+.action {
+  width: 100px;
+  height: 30px;
+  margin-left: 275px;
+}
+
+.student-list {
+  .student-item {
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+    padding: 10px;
+    background-color: #d3d0d06f;
+    border-radius: 5px;
+
+    .name-ctn {
+      display: flex;
+      justify-content: flex-start;
+      width: 30%;
+      margin-left: 30px;
+      font-weight: 600;
+    }
+    .email-ctn {
+      display: flex;
+      justify-content: flex-start;
+      width: 30%;
+      font-weight: 600;
+    }
+    .action-ctn {
+      width: 60%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .primary-btn {
+      width: 80px;
+      display: inline-block;
+      margin-left: 10px;
+      padding: 5px;
+      background-color: #3498db;
+      color: #fff;
+      font-size: 1rem;
+      text-decoration: none;
+      border-radius: 5px;
+      text-align: center;
+      font-weight: bold;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
+}
