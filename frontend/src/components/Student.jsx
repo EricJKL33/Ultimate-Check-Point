@@ -5,6 +5,8 @@ import "../Styles/studentComponent.scss";
 
 function Student() {
   const [students, setStudents] = useState([]);
+  const [search, setSearch] = useState("");
+  const [filteredStudents, setFilteredStudents] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -13,6 +15,18 @@ function Student() {
       .then((res) => setStudents(res.data))
       .catch((err) => console.error(err));
   }, []);
+
+  useEffect(() => {
+    // Filtrer les étudiants selon la recherche
+    const filteredData = students.filter((student) => {
+      return (
+        student.firstname.toLowerCase().includes(search.toLowerCase()) ||
+        student.lastname.toLowerCase().includes(search.toLowerCase()) ||
+        student.email.toLowerCase().includes(search.toLowerCase())
+      );
+    });
+    setFilteredStudents(filteredData);
+  }, [search, students]);
 
   const handleDelete = async (id) => {
     try {
@@ -41,16 +55,27 @@ function Student() {
           </button>
           <h2>Student register</h2>
         </div>
+        <div className="search-bar-ctn">
+          <input
+            type="text"
+            placeholder="Search by name or email"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </div>
         <div className="student-list-header">
           <h3 className="name">Name</h3>
           <h3 className="email">Email</h3>
           <h3 className="action">Action</h3>
         </div>
         <div className="student-list">
-          {students.map((student) => (
+          {filteredStudents.map((student) => (
             <div className="student-item" key={student.id}>
-              <div className="name-ctn">{student.Name}</div>
-              <div className="email-ctn">{student.Email}</div>
+              <div className="student-name-ctn">
+                <div className="firstname-ctn">{student.firstname}</div>
+                <div className="lastname-ctn">{student.lastname}</div>
+              </div>
+              <div className="email-ctn">{student.email}</div>
               <div className="action-ctn">
                 <button
                   className="primary-btn"
@@ -60,7 +85,7 @@ function Student() {
                   Update
                 </button>
                 <button
-                  className="primary-btn"
+                  className="secondary-btn"
                   type="button"
                   onClick={() => handleDelete(student.id)}
                 >

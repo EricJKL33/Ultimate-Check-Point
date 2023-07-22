@@ -1,8 +1,9 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import CreateStudent from "./components/createStudent";
 import Student from "./components/Student";
 import UpdateStudent from "./components/UpdateStudent";
+import CreateStudent from "./components/createStudent";
+import Login from "./components/Login";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
           <Route path="/" element={<Student />} />
           <Route path="/create" element={<CreateStudent />} />
           <Route path="/update/:id" element={<UpdateStudent />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </BrowserRouter>
     </div>

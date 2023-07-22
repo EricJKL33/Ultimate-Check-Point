@@ -6,18 +6,18 @@ class StudentManager extends AbstractManager {
   }
 
   insert(student) {
-    const { name, email } = student; // Assuming the request payload has 'name' and 'email' properties
+    const { firstname, lastname, email } = student; // Assuming the request payload has 'name' and 'email' properties
 
     return this.database.query(
-      `INSERT INTO ${this.table} (Name, Email) VALUES (?, ?)`,
-      [name, email]
+      `INSERT INTO ${this.table} (firstname, lastname, email) VALUES (?, ?, ?)`,
+      [firstname, lastname, email]
     );
   }
 
   update(student) {
     return this.database.query(
-      `update ${this.table} set Name = ?, Email = ? where id = ?`,
-      [student.Name, student.Email, student.id]
+      `update ${this.table} set firstname = ?, lastname = ?, email = ? where id = ?`,
+      [student.firstname, student.lastname, student.email, student.id]
     );
   }
 }

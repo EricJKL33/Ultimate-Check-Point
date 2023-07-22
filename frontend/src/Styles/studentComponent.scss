@@ -5,11 +5,41 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f1f1f1;
+  background-color: rgb(74, 189, 188);
+
+  .search-bar-ctn {
+    width: 280px;
+    padding: 0 0 0 323px;
+    background-color: #f1e9e9;
+    border-radius: 5px;
+    margin-bottom: 20px;
+
+    input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+  }
+
+  .search-results {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      padding: 10px;
+      background-color: #d3d0d06f;
+      border-radius: 5px;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+  }
 }
 
 .student-info {
-  background-color: #fff;
+  background-color: #f1e9e9;
+  height: 70vh;
   padding: 20px;
   border-radius: 5px;
   width: 80%;
@@ -17,7 +47,7 @@
 
   h2 {
     margin-right: 200px;
-    font-size: 2rem;
+    font-size: 2.2rem;
     margin-bottom: 20px;
   }
 }
@@ -33,7 +63,7 @@
   display: block;
   margin-bottom: 20px;
   padding: 10px 20px;
-  background-color: #2ecc71;
+  background-color: #4caf50;
   color: #fff;
   text-decoration: none;
   border-radius: 5px;
@@ -53,18 +83,18 @@
 .name {
   width: 100px;
   height: 30px;
-  margin-left: 17px;
+  margin-left: 10px;
 }
 
 .email {
   width: 100px;
   height: 30px;
-  margin-left: 65px;
+  margin-left: 210px;
 }
 .action {
   width: 100px;
   height: 30px;
-  margin-left: 275px;
+  margin-left: 225px;
 }
 
 .student-list {
@@ -76,21 +106,31 @@
     background-color: #d3d0d06f;
     border-radius: 5px;
 
-    .name-ctn {
+    .student-name-ctn {
       display: flex;
-      justify-content: flex-start;
-      width: 30%;
-      margin-left: 30px;
+      align-items: center;
+      width: 300px;
+    }
+
+    .firstname-ctn {
+      text-align: start;
+      width: auto;
       font-weight: 600;
     }
+    .lastname-ctn {
+      text-align: start;
+      width: auto;
+      font-weight: 600;
+      margin-left: 10px;
+    }
     .email-ctn {
-      display: flex;
-      justify-content: flex-start;
-      width: 30%;
+      text-align: start;
+      width: 275px;
+      margin-left: 10px;
       font-weight: 600;
     }
     .action-ctn {
-      width: 60%;
+      width: 190px;
       display: flex;
       justify-content: flex-end;
       align-items: center;
@@ -102,6 +142,21 @@
       margin-left: 10px;
       padding: 5px;
       background-color: #3498db;
+      color: #fff;
+      font-size: 1rem;
+      text-decoration: none;
+      border-radius: 5px;
+      text-align: center;
+      font-weight: bold;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .secondary-btn {
+      width: 80px;
+      display: inline-block;
+      margin-left: 10px;
+      padding: 5px;
+      background-color: #e74c3c;
       color: #fff;
       font-size: 1rem;
       text-decoration: none;
