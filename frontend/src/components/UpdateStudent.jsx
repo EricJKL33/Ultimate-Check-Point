@@ -5,13 +5,12 @@ import "../Styles/updateStudComp.scss";
 
 export default function UpdateStudent() {
   const [firstname, setFirstname] = useState("");
-  const [lastname, setLastname] = useState(""); // Ajout de lastname
+  const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
   const { id } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Récupère les données de l'étudiant à mettre à jour
     axios
       .get(`${import.meta.env.VITE_BACKEND_URL}/student/${id}`)
       .then((res) => {
@@ -19,9 +18,9 @@ export default function UpdateStudent() {
           firstname: studentName,
           lastname: studentLastName,
           email: studentEmail,
-        } = res.data; // Renomme 'email' en 'studentEmail'
+        } = res.data;
         setFirstname(studentName);
-        setLastname(studentLastName); // Définir la valeur de lastname
+        setLastname(studentLastName);
         setEmail(studentEmail);
       })
       .catch((err) => {
@@ -36,7 +35,7 @@ export default function UpdateStudent() {
         firstname,
         lastname,
         email,
-      }) // Ajout de lastname ici
+      })
       .then((res) => {
         console.info(res);
         navigate("/");

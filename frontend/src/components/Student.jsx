@@ -17,7 +17,6 @@ function Student() {
   }, []);
 
   useEffect(() => {
-    // Filtrer les étudiants selon la recherche
     const filteredData = students.filter((student) => {
       return (
         student.firstname.toLowerCase().includes(search.toLowerCase()) ||
