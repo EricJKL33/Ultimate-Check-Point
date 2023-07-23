@@ -4,7 +4,8 @@ import axios from "axios";
 import "../Styles/updateStudComp.scss";
 
 export default function UpdateStudent() {
-  const [name, setName] = useState("");
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState(""); // Ajout de lastname
   const [email, setEmail] = useState("");
   const { id } = useParams();
   const navigate = useNavigate();
@@ -14,8 +15,13 @@ export default function UpdateStudent() {
     axios
       .get(`${import.meta.env.VITE_BACKEND_URL}/student/${id}`)
       .then((res) => {
-        const { Name: studentName, Email: studentEmail } = res.data; // Renomme 'email' en 'studentEmail'
-        setName(studentName);
+        const {
+          firstname: studentName,
+          lastname: studentLastName,
+          email: studentEmail,
+        } = res.data; // Renomme 'email' en 'studentEmail'
+        setFirstname(studentName);
+        setLastname(studentLastName); // Définir la valeur de lastname
         setEmail(studentEmail);
       })
       .catch((err) => {
@@ -26,7 +32,11 @@ export default function UpdateStudent() {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .put(`${import.meta.env.VITE_BACKEND_URL}/student/${id}`, { name, email })
+      .put(`${import.meta.env.VITE_BACKEND_URL}/student/${id}`, {
+        firstname,
+        lastname,
+        email,
+      }) // Ajout de lastname ici
       .then((res) => {
         console.info(res);
         navigate("/");
@@ -41,14 +51,26 @@ export default function UpdateStudent() {
       <div className="update-stud-info">
         <form onSubmit={handleSubmit}>
           <h2>Update Student</h2>
-          <div className="name-input-ctn">
-            <label htmlFor="name">Name</label>
+          <div className="firstname-input-ctn">
+            <label htmlFor="firstname">Name</label>
             <input
               type="text"
-              id="name"
+              id="firstname"
               placeholder="Enter Name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              value={firstname}
+              onChange={(e) => setFirstname(e.target.value)}
+            />
+          </div>
+          <div className="lastname-input-ctn">
+            {" "}
+            {/* Champ Lastname */}
+            <label htmlFor="lastname">Lastname</label>
+            <input
+              type="text"
+              id="lastname"
+              placeholder="Enter Lastname"
+              value={lastname}
+              onChange={(e) => setLastname(e.target.value)}
             />
           </div>
           <div className="email-input-ctn">

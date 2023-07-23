@@ -4,14 +4,19 @@ import axios from "axios";
 import "../Styles/createStudComp.scss";
 
 export default function CreateStudent() {
-  const [name, setName] = useState("");
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post(`${import.meta.env.VITE_BACKEND_URL}/student`, { name, email })
+      .post(`${import.meta.env.VITE_BACKEND_URL}/student`, {
+        firstname,
+        lastname,
+        email,
+      })
       .then((res) => {
         console.info(res);
         navigate("/");
@@ -26,14 +31,24 @@ export default function CreateStudent() {
       <div className="create-stud-info">
         <form onSubmit={handleSubmit}>
           <h2>Add Student</h2>
-          <div className="name-input-ctn">
-            <label htmlFor="name">Name</label>
+          <div className="firstname-input-ctn">
+            <label htmlFor="name">Firstname</label>
             <input
               type="text"
               id="name"
               placeholder="Enter Name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              value={firstname}
+              onChange={(e) => setFirstname(e.target.value)}
+            />
+          </div>
+          <div className="lastname-input-ctn">
+            <label htmlFor="name">Lastame</label>
+            <input
+              type="text"
+              id="name"
+              placeholder="Enter Name"
+              value={lastname}
+              onChange={(e) => setLastname(e.target.value)}
             />
           </div>
           <div className="email-input-ctn">
