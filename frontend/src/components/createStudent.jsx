@@ -36,18 +36,18 @@ export default function CreateStudent() {
             <input
               type="text"
               id="name"
-              placeholder="Enter Name"
+              placeholder="Enter Firstname"
               value={firstname}
               onChange={(e) => setFirstname(e.target.value)}
             />
           </div>
           <div className="lastname-input-ctn">
-            <label htmlFor="name">Lastame</label>
+            <label htmlFor="name">Lastname</label>
             <input
               type="text"
               id="name"
               placeholder="Enter Name"
-              value={firstname}
+              value={lastname}
               onChange={(e) => setLastname(e.target.value)}
             />
           </div>
