@@ -6,7 +6,6 @@ class userManager extends AbstractManager {
   }
 
   findUserByEmail(user) {
-    console.log(user);
     if (!user) {
       throw new Error("email is required");
     }

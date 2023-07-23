@@ -47,7 +47,7 @@ export default function CreateStudent() {
               type="text"
               id="name"
               placeholder="Enter Name"
-              value={firstname}
+              value={lastname}
               onChange={(e) => setLastname(e.target.value)}
             />
           </div>

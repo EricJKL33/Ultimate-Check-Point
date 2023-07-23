@@ -1,3 +1,4 @@
+const jwt = require("jsonwebtoken");
 const models = require("../models");
 
 const getUserByEmail = (req, res, next) => {
@@ -29,11 +30,42 @@ const verifyPassword = async (req, res, next) => {
   if (sentPassword !== userPassword) {
     res.sendStatus(401);
   } else {
+    const token = jwt.sign(
+      { id: req.body.user[0].id },
+      process.env.JWT_SECRET,
+      { expiresIn: "1h" }
+    );
+    res.status(200).send({ auth: true, token });
     next();
+  }
+};
+
+const verifyToken = (req, res, next) => {
+  try {
+    const authorizationHeader = req.get("Authorization");
+
+    if (authorizationHeader == null) {
+      throw new Error("Authorization header is missing");
+    }
+
+    const [type, token] = authorizationHeader.split(" ");
+
+    if (type !== "secretTK") {
+      throw new Error("Authorization header has not the 'secret token' type");
+    }
+
+    const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+    req.user_id = decodedToken.user_id;
+
+    next();
+  } catch (err) {
+    console.error(err);
+    res.sendStatus(401);
   }
 };
 
 module.exports = {
   getUserByEmail,
   verifyPassword,
+  verifyToken,
 };
